@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#0b3545"/>
+  <path d="M190 466 512 198l322 268v344c0 31-25 56-56 56H246c-31 0-56-25-56-56Z" fill="#ffffff"/>
+  <path d="m144 466 368-306 368 306-57 69-311-258-311 258Z" fill="#16a085"/>
+  <rect x="424" y="532" width="176" height="334" rx="24" fill="#16a085"/>
+  <circle cx="557" cy="700" r="15" fill="#ffffff"/>
+  <text x="512" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="142" font-weight="800" fill="#0b3545">365</text>
+</svg>
