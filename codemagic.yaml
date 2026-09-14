@@ -6,7 +6,7 @@ workflows:
     instance_type: mac_mini_m1 # Sử dụng máy ảo Mac M1 tối ưu cho iOS
     environment:
       ios_signing:
-        distribution_type: app_store # Thay đổi thành development hoặc ad_hoc nếu cần
+        distribution_type: ad_hoc # Thay đổi thành development hoặc ad_hoc nếu cần
         bundle_identifier: xyz.868686869.myapp # Sửa lại thành Bundle ID ứng dụng của bạn
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # Đường dẫn tới file .xcworkspace của bạn
