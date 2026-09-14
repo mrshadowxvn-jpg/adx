@@ -1,0 +1,40 @@
+# File cấu hình mẫu Codemagic cho iOS
+workflows:
+  ios-workflow:
+    name: iOS Build Workflow
+    max_build_duration: 60
+    instance_type: mac_mini_m1 # Sử dụng máy ảo Mac M1 tối ưu cho iOS
+    environment:
+      ios_signing:
+        distribution_type: app_store # Thay đổi thành development hoặc ad_hoc nếu cần
+        bundle_identifier: com.example.myapp # Sửa lại thành Bundle ID ứng dụng của bạn
+      vars:
+        XCODE_WORKSPACE: "ios/Runner.xcworkspace" # Đường dẫn tới file .xcworkspace của bạn
+        XCODE_SCHEME: "Runner" # Tên Xcode Scheme của bạn
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+    scripts:
+      - name: Initialize keychain
+        script: |
+          keychain initialize
+      - name: Fetch signing profiles
+        script: |
+          # Lệnh tự động lấy chứng chỉ ký ứng dụng từ App Store Connect
+          app-store-connect fetch-signing-files "$BUNDLE_IDENTIFIER" --type "$DISTRIBUTION_TYPE" --create
+      - name: Set up code signing
+        script: |
+          keychain add-certificates
+      - name: Build iOS App
+        script: |
+          # Lệnh build xuất bản ứng dụng gốc (Native iOS). 
+          # NẾU DÙNG FLUTTER, hãy sửa lệnh dưới đây thành: flutter build ipa --release
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
