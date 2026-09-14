@@ -7,7 +7,7 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store # Thay đổi thành development hoặc ad_hoc nếu cần
-        bundle_identifier: com.example.myapp # Sửa lại thành Bundle ID ứng dụng của bạn
+        bundle_identifier: xyz.868686869.myapp # Sửa lại thành Bundle ID ứng dụng của bạn
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # Đường dẫn tới file .xcworkspace của bạn
         XCODE_SCHEME: "Runner" # Tên Xcode Scheme của bạn
